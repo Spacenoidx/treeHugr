@@ -1,17 +1,18 @@
 from flask import Flask, render_template, url_for, request, redirect
+from models import Tree
 
 app = Flask(__name__)
 
-@app.route("/")
+@app.route("/index.html")
 def home_page():
-    return "Sample!"
+   return render_template("/index.html")
 
 @app.route("/treelist.html")
 def tree_list():
-    return TreeList
+    render_template("/TreeList.html")
 
 @app.route("/formpage.html")
-def form_page:
+def form_page():
     render_template("")
 
 @app.route('/submit-tree', methods=['POST'])
@@ -28,4 +29,3 @@ def submit_tree():
     # Redirect to a success page or display a confirmation message
     return redirect('/treelist.html')  # Example redirect
 
-test = Tree.create(species = "Oak", diameter = "10.0")
