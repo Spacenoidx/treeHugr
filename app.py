@@ -11,21 +11,24 @@ def home_page():
 def tree_list():
     render_template("/TreeList.html")
 
-@app.route("/formpage.html")
+@app.route("/form_page.html")
 def form_page():
-    render_template("")
+    return render_template("/form_page.html")
 
-@app.route('/submit-tree', methods=['POST'])
+@app.route('/submit_form', methods=['POST', 'GET'])
 
-def submit_tree():
-    species = request.form['species']
-    diameter = float(request.form['diameter'])
+def submit_form():
+    if request.method == "POST":
+        data = request.form.to_dict()
+
+        species_name = request.form['species_name']
+        diameter = float(request.form['diameter'])
 
     # Validate and sanitize data if needed (e.g., check for empty fields or invalid input)
 
-    # Create a new Tree instance
-    tree = Tree.create(species=species, diameter=diameter)
+        # Create a new Tree instance
+        tree = Tree.create(species=species_name, diameter=diameter)
 
     # Redirect to a success page or display a confirmation message
-    return redirect('/treelist.html')  # Example redirect
+        return "nice!"  # Example redirect
 
