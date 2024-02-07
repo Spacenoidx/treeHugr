@@ -20,6 +20,8 @@
         <!-- favicon.ico. Place these in the root directory. -->
         <link rel="shortcut icon" href="./static/assets/favicon.ico">
 
+
+
     </head>
 
 
@@ -32,14 +34,17 @@
     <div class="bg--white">
 
         <!-- Header -->
+
+
         <header class="align--center pt3 pb2">
-  <div class="container">
+
+            <div class="container">
     <a href="/tree_table.html">
       <h1 class="mb3 reveal-on-scroll is-revealing" title="Huddle"><img src="./static/assets/img/logo.svg" alt="Huddle"></h1>
     </a>
     <h2 class="mb3 reveal-on-scroll is-revealing">The mobile app for finding trees.</h2>
 
-      <section>
+                <section>
       <a href="/">
     <p class="mb1">Home</p>
           </a>
@@ -55,36 +60,42 @@
 
 
     </div>
-</header>
+
+
+        </header>
 
         <!-- Body -->
         <main>
             <div class="container">
 
-                <section>
-                    <h2>WWF History</h2>
-                    <p>The World Wide Fund for Nature (WWF) is an international organization working on issues regarding the conservation, research and restoration of the environment, formerly named the World Wildlife Fund. WWF was founded in 1961.</p>
-                </section>
 
-                <!-- Info -->
-                <section class="pt2 pb3">                    
-                    <img class="mb3" src="./static/assets/img/presentor.jpg" alt="Huddle presentation">
-                    <div class="grid-row">
-                        <div class="grid-column span-one-third mt1 reveal-on-scroll is-revealing">
-                            <img class="icon mb1" src="./static/assets/img/bucket.svg">
-                            <p>Find other tree huggers to get close to nature with.</p>
-                        </div>
-                        <div class="grid-column span-one-third mt1 reveal-on-scroll is-revealing">
-                            <img class="icon mb1" src="./static/assets/img/flask.svg">
-                            <p>Nonne videmus quanta perturbatio rerum omnium consequatur&nbsp;quanta.</p>
-                        </div>
-                        <div class="grid-column span-one-third mt1 reveal-on-scroll is-revealing">
-                            <img class="icon mb1" src="./static/assets/img/aircraft.svg">
-                            <p>Find lovely trees to visit.</p>
-                        </div>
-                    </div>
-                     
-                </section>
+
+                <section>
+<table class="my-table">
+
+    <thead>
+        <tr>
+            <th>Species</th>
+            <th>Diameter</th>
+            <th>Date Posted</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for tree in trees %}
+            <tr>
+                <td>{{ tree.species }}</td>
+                <td>{{ tree.diameter }}</td>
+                <td>{{ tree.postdate }}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+</section>
+
+
+
+
 
 
 
