@@ -35,12 +35,13 @@ def submit_form():
         species_name = data['species_name']
         diameter = float(data['diameter'])
         post_date = Tree.postdate
+        activity = data["activity"]
 
 
     # Validate and sanitize data if needed (e.g., check for empty fields or invalid input)
 
         # Create a new Tree instance
-        tree = Tree.create(species=species_name, diameter=diameter, post_date = post_date)
+        tree = Tree.create(species=species_name, diameter=diameter, post_date = post_date, activity=activity)
 
     # Redirect to a success page or display a confirmation message
         return render_template("/thankyou.html")  # Example redirect

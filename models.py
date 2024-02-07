@@ -12,4 +12,4 @@ class Tree(BaseModel):
     species = CharField()
     diameter = FloatField()
     postdate = TextField(default=datetime.date.today)
-    
+    activity = TextField()
