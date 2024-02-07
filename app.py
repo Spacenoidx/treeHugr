@@ -30,13 +30,16 @@ def tableshow():
     trees = Tree.select()
     return render_template('/tree_table.html', trees = trees, encode_image=encode_image)
 
-@app.route('/submit_form', methods=['POST', 'GET'])
 
+"""A function to handle form submission. It processes the form data, 
+creates a new Tree instance, and redirects to a success page or displays 
+a confirmation message. """
+@app.route('/submit_form', methods=['POST', 'GET'])
 def submit_form():
     if request.method == "POST":
         data = request.form
         uploaded_file = request.files['photo']
-        image_data = uploaded_file.read()
+        photo = uploaded_file.read()
         species_name = data['species_name']
         diameter = float(data['diameter'])
         post_date = Tree.postdate
@@ -47,7 +50,7 @@ def submit_form():
     # Validate and sanitize data if needed (e.g., check for empty fields or invalid input)
 
         # Create a new Tree instance
-        tree = Tree.create(species=species_name, diameter=diameter, post_date = post_date, activity=activity, photo=image_data)
+        tree = Tree.create(species=species_name, diameter=diameter, post_date = post_date, activity=activity, photo=photo)
 
     # Redirect to a success page or display a confirmation message
         return render_template("/thankyou.html")  # Example redirect
