@@ -54,7 +54,6 @@ def submit_form():
 
 # Database connection and table creation.
 db.connect()
-db.drop_tables([Tree])
 db.create_tables([Tree])
 print(f"{Tree._meta.fields} coming from the app.py script.")
 print(db.get_columns("Tree"))
